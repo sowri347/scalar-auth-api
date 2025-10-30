@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware 
+from fastapi.middleware.cors import CORSMiddleware
 from app.routes.login import router as auth_router
 from app.core.database import connect_to_mongo, create_indexes
 
@@ -10,11 +10,12 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# ✅ Enable CORS (Allow All Origins)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allow all origins
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
+    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers
 )
 
@@ -32,7 +33,6 @@ async def startup_db_client():
     await connect_to_mongo()
     await create_indexes()
 
-# Include routes
 app.include_router(auth_router, prefix="/api/v1/auth", tags=["authentication"])
 
 if __name__ == "__main__":
