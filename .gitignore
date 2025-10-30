@@ -3,6 +3,7 @@ venv/
 .Venv/
 ENV/
 env/
+/Lib
 
 # Ignore Python cache and compiled files
 __pycache__/
