@@ -21,7 +21,7 @@ function App() {
       formData.append('username', username);
       formData.append('password', password);
 
-      const response = await fetch('http://localhost:8000/login', {
+      const response = await fetch('http://localhost:8000/api/v1/authlogin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -54,7 +54,7 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/signup', {
+      const response = await fetch('http://localhost:8000/api/v1/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
